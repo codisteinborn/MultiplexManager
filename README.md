@@ -1,4 +1,6 @@
 # Multiplex Manager
+GitHub Repository - <https://github.com/codisteinborn/MultiplexManager> \
+Application Link - <https://codisteinborn.github.io/MultiplexManager/>
 
 ## Introduction
 The Multiplex Manager is an application built for theatre scheduling. Assuming the multiplex contains multiple screens, each playing a different movie throughout the day, the manager app will create a schedule of start and end times for each movie. The generated schedule takes into account previews as well as cleaning times in between showings.
@@ -27,7 +29,7 @@ Below is a screenshot from the Multiplex Manager showing movie times from Mean G
 
 ## Built Utilizing
 jQuery - <http://api.jquery.com/> \
-Google Fonts - <https://fonts.google.com/> \
+Google Fonts - <https://fonts.google.com/> 
 
 # Original Contributor:
-Codi Steinborn  - <https://github.com/codisteinborn/> \
+Codi Steinborn  - <https://github.com/codisteinborn/> 
