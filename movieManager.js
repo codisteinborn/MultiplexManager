@@ -33,7 +33,7 @@ const firstShow = 15;
 const previews = 15;
 const clean = 20;
 const wkdyHrs = 720;
-const wkndHrs = 870;
+const wkndHrs = 810;
 const wkdyOpen = 660;
 const wkndOpen = 630;
 
@@ -52,6 +52,9 @@ $(document).ready(function () {
         showsPerMovie = movies.map(movie => ({ ...movie, wkdyshows: Math.floor((wkdyHrs - firstShow) / (movie.length + previews + clean)), wkndshows: Math.floor((wkndHrs - firstShow) / (movie.length + previews + clean)) }));
     });
 
+    /**
+     * This on click function takes in the selected movie and day type and appends movie info and schedule to the page
+     */
     $("#submit").on("click", function () {
         $("#sched").text("");
         $("#schedEnd").text("");
@@ -73,9 +76,6 @@ $(document).ready(function () {
             wkdyendtimes.push(wkdyshowtimes[i] + showsPerMovie[$(".selectMovie").val()].length)
         }
         var wkndshowtimes = [660];
-        // for (let i = 1; i < showsPerMovie[$(".selectMovie").val()].wkndshows; i++) {
-        //     wkndshowtimes.push(wkndshowtimes[i - 1] + (showsPerMovie[$(".selectMovie").val()].length + previews + clean + (5 - (showsPerMovie[$(".selectMovie").val()].length % 5))))
-        // }
         for (let i = 1; i < showsPerMovie[$(".selectMovie").val()].wkndshows; i++) {
             if((showsPerMovie[$(".selectMovie").val()].length % 5) !== 0){
                 wkndshowtimes.push(wkndshowtimes[i - 1] + (showsPerMovie[$(".selectMovie").val()].length + previews + clean + (5 - (showsPerMovie[$(".selectMovie").val()].length % 5))))}
@@ -88,7 +88,7 @@ $(document).ready(function () {
         }
 
         /**
-         * These begTimeFun and endTimeFun functions take in an array of times (in minutes after 00:00) and give back a time in 12hr formatting appended to the page
+         * The begTimeFun and endTimeFun functions take in an array of times (in minutes after 00:00) and give back a time in 12hr formatting appended to the page
          * @param {array} - this function will be passed the array of either weekday or weekend show times and end times
          */
         const begTimeFun = function (arr) {
