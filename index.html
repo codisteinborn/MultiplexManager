@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Multiplex Schedule Maker</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="movieManager.js"></script>
+</head>
+
+<body>
+    <h1>Multiplex Manager</h1>
+    <div id="currMovies">
+        <h2>Select Your Movie and Day:</h2>
+        <select class="selectMovie" placeholder="Movie">
+            <option value="0">The Matrix</option>
+            <option value="1">Mean Girls</option>
+            <option value="2">The Notebook</option>
+            <option value="3">The Shining</option>
+        </select>
+        <select class="selectDay" placeholder="Day">
+            <option value="wkdy">Weekday</option>
+            <option value="wknd">Weekend</option>
+        </select>
+        <button id="submit">Find Times</button>
+        <div id="movieInfo"></div>
+        <h2>Schedule:</h2>
+            <div id="sched"></div>
+            <div id="schedEnd"></div>
+    </div>
+    <div id="addMovie">
+        <h2>Add a Movie</h2>
+        <div>Movie Title:
+            <input id="newTitle" aria-placeholder="title" />
+        </div>
+        <div>Rating:
+            <input id="newRating" />
+        </div>
+        <div>Year:
+            <input id="newYear" />
+        </div>
+        <div>Length (in minutes):
+            <input id="newLength" />
+        </div>
+        <button id="add">Add</button>
+    </div>
+</body>
+
+</html>
