@@ -27,7 +27,7 @@ const movies = [
         length: 146
     }];
 /**
- * These variables represent the time (in minutes from 00:00) for theatre opening and closing. Also for the times required in between show times.
+ * These variables represent the time (in minutes from 00:00) for theatre opening and closing. Also for the number of minutes the theatre is open and the times required in between show times.
  */
 const firstShow = 15;
 const previews = 15;
@@ -39,9 +39,9 @@ const wkndOpen = 630;
 
 $(document).ready(function () {
     /**
-     * This function maps through the movies array and adds porperties to each movie showing the number of times it will show on weekdays and weekends
-     * 
-     */
+    * This function maps through the movies array and adds porperties to each movie showing the number of times it will show on weekdays and weekends
+    * @param {array} - movies array represents the pre-loaded movies
+    */
     var showsPerMovie = movies.map(movie => ({ ...movie, wkdyshows: Math.floor((wkdyHrs - firstShow) / (movie.length + previews + clean)), wkndshows: Math.floor((wkndHrs - firstShow) / (movie.length + previews + clean)) }));
     /**
      * This onclick function adds a new movie to the movie array which can be added to the schedule maker.
@@ -50,10 +50,10 @@ $(document).ready(function () {
         $(".selectMovie").append("<option value='" + movies.length + "'>" + $(newTitle).val() + "</option>");
         movies.push({ title: $(newTitle).val(), year: $(newYear).val(), rating: $(newRating).val(), length: (parseInt($(newLength).val())) })
         showsPerMovie = movies.map(movie => ({ ...movie, wkdyshows: Math.floor((wkdyHrs - firstShow) / (movie.length + previews + clean)), wkndshows: Math.floor((wkndHrs - firstShow) / (movie.length + previews + clean)) }));
-    $(newTitle).val("");
-    $(newYear).val("");
-    $(newRating).val("");
-    $(newLength).val("");
+        $(newTitle).val("");
+        $(newYear).val("");
+        $(newRating).val("");
+        $(newLength).val("");
     });
 
     /**
@@ -66,25 +66,29 @@ $(document).ready(function () {
         $("#movieInfo").append("<h2>" + movies[$(".selectMovie").val()].title + "</h2> <p> Release year: " + movies[$(".selectMovie").val()].year + ". Rating: " + movies[$(".selectMovie").val()].rating + ". Run time: " + movies[$(".selectMovie").val()].length + " minutes")
 
         /**
-         * These arrays reprsent the beginning and ending times of the movies
+         * These arrays reprsent the beginning showtimes and ending times of the selected movie
          */
-        var wkdyshowtimes = [690];
+        var wkdyshowtimes = [parseInt(wkdyOpen)];
         for (let i = 1; i < showsPerMovie[$(".selectMovie").val()].wkdyshows; i++) {
-            if((showsPerMovie[$(".selectMovie").val()].length % 5) !== 0){
-            wkdyshowtimes.push(wkdyshowtimes[i - 1] + (showsPerMovie[$(".selectMovie").val()].length + previews + clean + (5 - (showsPerMovie[$(".selectMovie").val()].length % 5))))}
-            else{
-                wkdyshowtimes.push(wkdyshowtimes[i - 1] + (showsPerMovie[$(".selectMovie").val()].length + previews + clean))}
+            if ((showsPerMovie[$(".selectMovie").val()].length % 5) !== 0) {
+                wkdyshowtimes.push(wkdyshowtimes[i - 1] + (showsPerMovie[$(".selectMovie").val()].length + previews + clean + (5 - (showsPerMovie[$(".selectMovie").val()].length % 5))))
+            }
+            else {
+                wkdyshowtimes.push(wkdyshowtimes[i - 1] + (showsPerMovie[$(".selectMovie").val()].length + previews + clean))
+            }
         }
         var wkdyendtimes = [];
         for (let i = 0; i < wkdyshowtimes.length; i++) {
             wkdyendtimes.push(wkdyshowtimes[i] + showsPerMovie[$(".selectMovie").val()].length)
         }
-        var wkndshowtimes = [660];
+        var wkndshowtimes = [parseInt(wkndOpen)];
         for (let i = 1; i < showsPerMovie[$(".selectMovie").val()].wkndshows; i++) {
-            if((showsPerMovie[$(".selectMovie").val()].length % 5) !== 0){
-                wkndshowtimes.push(wkndshowtimes[i - 1] + (showsPerMovie[$(".selectMovie").val()].length + previews + clean + (5 - (showsPerMovie[$(".selectMovie").val()].length % 5))))}
-            else{
-                wkndshowtimes.push(wkndshowtimes[i - 1] + (showsPerMovie[$(".selectMovie").val()].length + previews + clean))}
+            if ((showsPerMovie[$(".selectMovie").val()].length % 5) !== 0) {
+                wkndshowtimes.push(wkndshowtimes[i - 1] + (showsPerMovie[$(".selectMovie").val()].length + previews + clean + (5 - (showsPerMovie[$(".selectMovie").val()].length % 5))))
+            }
+            else {
+                wkndshowtimes.push(wkndshowtimes[i - 1] + (showsPerMovie[$(".selectMovie").val()].length + previews + clean))
+            }
         }
         var wkndendtimes = [];
         for (let i = 0; i < wkndshowtimes.length; i++) {
@@ -104,21 +108,21 @@ $(document).ready(function () {
                     begH = 12;
                     begM = parseInt(arr[i] % 60);
                     if (begM.toString().length < 2)
-                    begM = "0" + begM;
+                        begM = "0" + begM;
                     begap = "pm";
                 }
                 else if ((arr[i] / 60) > 12) {
                     begH = parseInt((arr[i] / 60) - 12);
                     begM = parseInt(arr[i] % 60);
                     if (begM.toString().length < 2)
-                    begM = "0" + begM;
+                        begM = "0" + begM;
                     begap = "pm";
                 }
                 else {
                     begH = parseInt((arr[i] / 60));
                     begM = parseInt(arr[i] % 60);
                     if (begM.toString().length < 2)
-                    begM = "0" + begM;
+                        begM = "0" + begM;
                     begap = "am";
                 }
                 $("#sched").append("<p>" + begH + ":" + begM + " " + begap)
