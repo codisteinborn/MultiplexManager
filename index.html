@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Multiplex Schedule Maker</title>
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="movieManager.js"></script>
@@ -28,6 +29,8 @@
         <button id="submit">Find Times</button>
         <div id="movieInfo"></div>
         <h2>Schedule:</h2>
+        <div id="start">Start:</div>
+            <div id="end">End:</div>
             <div id="sched"></div>
             <div id="schedEnd"></div>
     </div>
@@ -39,7 +42,7 @@
         <div>Rating:
             <input id="newRating" />
         </div>
-        <div>Year:
+        <div>Release Year:
             <input id="newYear" />
         </div>
         <div>Length (in minutes):
@@ -47,6 +50,7 @@
         </div>
         <button id="add">Add</button>
     </div>
+    <footer> &copy; Codi Steinborn 2018</footer>
 </body>
 
 </html>
