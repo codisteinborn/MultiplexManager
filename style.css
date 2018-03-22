@@ -1,0 +1,23 @@
+#currMovies, #addMovie{
+    float:left;
+    text-align: center;
+    padding: 5px;
+}
+#currMovies{
+    width:50%
+}
+#addMovie{
+    width:35%;
+    border: 3px solid gray;
+}
+h1{
+    text-align: center;
+}
+button{
+    background-color: rgb(78, 151, 245);
+    color: white;
+}
+#sched, #schedEnd{
+    width: 45%;
+    float: left;
+}
