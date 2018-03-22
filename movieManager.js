@@ -50,6 +50,10 @@ $(document).ready(function () {
         $(".selectMovie").append("<option value='" + movies.length + "'>" + $(newTitle).val() + "</option>");
         movies.push({ title: $(newTitle).val(), year: $(newYear).val(), rating: $(newRating).val(), length: (parseInt($(newLength).val())) })
         showsPerMovie = movies.map(movie => ({ ...movie, wkdyshows: Math.floor((wkdyHrs - firstShow) / (movie.length + previews + clean)), wkndshows: Math.floor((wkndHrs - firstShow) / (movie.length + previews + clean)) }));
+    $(newTitle).val("");
+    $(newYear).val("");
+    $(newRating).val("");
+    $(newLength).val("");
     });
 
     /**
